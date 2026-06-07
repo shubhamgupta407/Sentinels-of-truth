@@ -36,7 +36,7 @@ const VerificationBox = ({ onVerify, onClear, isLoading }) => {
             disabled={isLoading}
             rows={3}
             className="w-full rounded-lg border border-slate-700 bg-slate-900 p-4 text-slate-100 placeholder-slate-500 focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 transition-all shadow-inner disabled:bg-slate-900/50 resize-none font-medium text-[15px]"
-            placeholder="Enter a factual claim to verify (e.g., 'Narendra Modi is the President of India.')"
+            placeholder="Enter a Claim to verify..."
           />
           <div className="absolute bottom-3 right-3 text-xs font-mono text-slate-500 pointer-events-none">
             {claim.length} chars
@@ -46,7 +46,7 @@ const VerificationBox = ({ onVerify, onClear, isLoading }) => {
         <div className="mt-4 flex items-center justify-between">
           <div className="text-xs text-slate-400 flex items-center gap-1.5 font-mono">
             <svg className="w-4 h-4 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-            Verification takes ~5-15s
+            Verification takes ~3-8 sec
           </div>
           <div className="flex gap-3">
             <button

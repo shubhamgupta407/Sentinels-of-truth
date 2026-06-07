@@ -14,7 +14,8 @@ const AuditLogsView = ({ onBack }) => {
   useEffect(() => {
     const fetchLogs = async () => {
       try {
-        const response = await fetch('http://localhost:8000/api/v1/audit-logs/');
+        const API_BASE_URL = import.meta.env.VITE_API_URL || 'https://sentinels-of-truth-api.onrender.com';
+        const response = await fetch(`${API_BASE_URL}/api/v1/audit-logs/`);
         if (!response.ok) {
           throw new Error('Failed to fetch audit logs');
         }

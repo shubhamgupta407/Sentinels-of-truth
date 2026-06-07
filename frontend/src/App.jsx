@@ -18,7 +18,8 @@ function App() {
     setError(null);
 
     try {
-      const response = await fetch('http://localhost:8000/api/v1/verify/', {
+      const API_BASE_URL = import.meta.env.VITE_API_URL || 'https://sentinels-of-truth-api.onrender.com';
+      const response = await fetch(`${API_BASE_URL}/api/v1/verify/`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -78,7 +79,7 @@ function App() {
 
       {/* Architecture Page View */}
       {currentView === 'architecture' && (
-        <main className="max-w-4xl mx-auto px-4 py-12 md:py-20 relative z-10 animate-in fade-in slide-in-from-bottom-4 duration-500">
+        <main className="max-w-4xl mx-auto px-4 py-6 md:py-8 relative z-10 animate-in fade-in slide-in-from-bottom-4 duration-500">
           <div className="mb-8">
             <button 
               onClick={() => setCurrentView('dashboard')}
@@ -97,7 +98,7 @@ function App() {
 
       {/* Audit Logs View */}
       {currentView === 'audit' && (
-        <main className="max-w-5xl mx-auto px-4 py-12 md:py-20 relative z-10">
+        <main className="max-w-5xl mx-auto px-4 py-6 md:py-8 relative z-10">
           <AuditLogsView onBack={() => setCurrentView('dashboard')} />
         </main>
       )}

@@ -12,104 +12,100 @@ const AgentArchitecture = ({ result }) => {
       </p>
 
       {/* LangGraph Orchestration Section */}
-      <div className="bg-slate-900/80 backdrop-blur-sm border border-brand-900/50 rounded-xl p-6 shadow-lg mb-8 relative overflow-hidden">
+      <div className="bg-slate-900/80 backdrop-blur-sm border border-brand-900/50 rounded-xl p-5 shadow-lg mb-6 relative overflow-hidden">
         <div className="absolute top-0 left-0 w-full h-1 bg-brand-500"></div>
-        <h3 className="text-lg font-bold text-slate-200 mb-6 border-b border-slate-800 pb-3 flex items-center gap-2">
+        <h3 className="text-sm font-bold text-slate-200 mb-4 border-b border-slate-800 pb-2 flex items-center gap-2 tracking-wider uppercase">
           LANGGRAPH ORCHESTRATION
         </h3>
-        <div className="flex flex-col items-center justify-center space-y-2 text-sm font-mono text-slate-300 py-4">
-          <div className="bg-slate-950/50 border border-slate-800 px-6 py-2 rounded-lg text-center shadow-inner">START</div>
-          <div className="text-slate-600">↓</div>
-          <div className="bg-brand-950/30 border border-brand-800/50 text-brand-400 px-6 py-2 rounded-lg text-center shadow-inner">AgentState</div>
-          <div className="text-slate-600">↓</div>
-          <div className="bg-slate-950/50 border border-slate-800 px-6 py-2 rounded-lg text-center shadow-inner">Alpha Agent</div>
-          <div className="text-slate-600">↓</div>
-          <div className="bg-slate-950/50 border border-slate-800 px-6 py-2 rounded-lg text-center shadow-inner">Beta Agent</div>
-          <div className="text-slate-600">↓</div>
-          <div className="bg-slate-950/50 border border-slate-800 px-6 py-2 rounded-lg text-center shadow-inner">END</div>
+        <div className="flex flex-wrap items-center justify-center gap-2 md:gap-4 text-xs md:text-sm font-mono text-slate-200 py-3">
+          <div className="bg-slate-800/80 border border-slate-600/50 px-4 py-1.5 rounded-lg text-center shadow-lg font-bold tracking-wide">START</div>
+          <div className="text-brand-500/60 font-black">→</div>
+          <div className="bg-brand-950/40 border border-brand-500/40 text-brand-300 px-4 py-1.5 rounded-lg text-center shadow-[0_0_15px_rgba(2,132,199,0.2)] font-bold tracking-wide">AgentState</div>
+          <div className="text-brand-500/60 font-black">→</div>
+          <div className="bg-brand-950/20 border border-brand-700/30 text-brand-200 px-4 py-1.5 rounded-lg text-center shadow-md">Alpha Agent</div>
+          <div className="text-brand-500/60 font-black">→</div>
+          <div className="bg-brand-950/20 border border-brand-700/30 text-brand-200 px-4 py-1.5 rounded-lg text-center shadow-md">Beta Agent</div>
+          <div className="text-brand-500/60 font-black">→</div>
+          <div className="bg-slate-800/80 border border-slate-600/50 px-4 py-1.5 rounded-lg text-center shadow-lg font-bold tracking-wide">END</div>
         </div>
       </div>
 
       {/* Part 1 & 2: Agent Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
         {/* Alpha Agent Card */}
-        <div className="bg-slate-900/80 backdrop-blur-sm border border-slate-800/80 rounded-xl p-6 shadow-lg relative overflow-hidden group hover:border-brand-500/30 transition-all">
+        <div className="bg-slate-900/80 backdrop-blur-sm border border-slate-800/80 rounded-xl p-6 shadow-lg relative overflow-hidden group hover:border-brand-500/50 transition-all">
           <div className="absolute top-0 left-0 w-full h-1 bg-slate-800 group-hover:bg-brand-500 transition-colors"></div>
-          <h3 className="text-lg font-bold text-slate-200 mb-2 border-b border-slate-800 pb-3 flex items-center gap-2">
-            <span className="text-brand-500">Alpha Agent</span> — Verification
+          <h3 className="text-base font-bold text-slate-100 mb-1 border-b border-slate-800/80 pb-3 flex items-center gap-2">
+            <span className="text-brand-400">Alpha Agent</span> <span className="text-slate-500 font-normal">—</span> Verification
           </h3>
-          <p className="text-sm text-slate-400 mb-6 font-medium">
+          <p className="text-xs text-slate-400 mb-5 mt-3 font-medium">
             Responsible for external evidence retrieval and factual validation.
           </p>
           
           <div className="mb-6">
-            <h4 className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-3">Workflow</h4>
-            <div className="text-xs text-slate-300 space-y-1 font-mono">
-              <div className="flex flex-col items-center">
-                <span className="bg-slate-950/50 border border-slate-800 px-3 py-2 rounded-lg w-full text-center shadow-inner">Claim Input</span>
-                <span className="text-slate-600 py-1">↓</span>
-                <span className="bg-slate-950/50 border border-slate-800 px-3 py-2 rounded-lg w-full text-center shadow-inner">Tavily Retrieval</span>
-                <span className="text-slate-600 py-1">↓</span>
-                <span className="bg-slate-950/50 border border-slate-800 px-3 py-2 rounded-lg w-full text-center shadow-inner">Evidence Chunking</span>
-                <span className="text-slate-600 py-1">↓</span>
-                <span className="bg-slate-950/50 border border-slate-800 px-3 py-2 rounded-lg w-full text-center shadow-inner">Embedding Search</span>
-                <span className="text-slate-600 py-1">↓</span>
-                <span className="bg-slate-950/50 border border-slate-800 px-3 py-2 rounded-lg w-full text-center shadow-inner">Top-5 Retrieval</span>
-                <span className="text-slate-600 py-1">↓</span>
-                <span className="bg-slate-950/50 border border-slate-800 px-3 py-2 rounded-lg w-full text-center shadow-inner">LLM Verification</span>
-                <span className="text-slate-600 py-1">↓</span>
-                <span className="bg-slate-950/50 border border-slate-800 px-3 py-2 rounded-lg w-full text-center shadow-inner">Verification Report</span>
-              </div>
+            <h4 className="text-[10px] font-bold text-slate-500 uppercase tracking-wider mb-3">Workflow</h4>
+            <div className="text-[10px] sm:text-xs text-brand-200/90 font-mono flex flex-wrap items-center gap-2">
+              <span className="bg-brand-950/30 border border-brand-800/50 px-2.5 py-1.5 rounded-md shadow-[0_0_10px_rgba(2,132,199,0.1)]">Claim Input</span>
+              <span className="text-brand-500/50 font-bold">→</span>
+              <span className="bg-brand-950/30 border border-brand-800/50 px-2.5 py-1.5 rounded-md shadow-[0_0_10px_rgba(2,132,199,0.1)]">Tavily Retrieval</span>
+              <span className="text-brand-500/50 font-bold">→</span>
+              <span className="bg-brand-950/30 border border-brand-800/50 px-2.5 py-1.5 rounded-md shadow-[0_0_10px_rgba(2,132,199,0.1)]">Chunking</span>
+              <span className="text-brand-500/50 font-bold">→</span>
+              <span className="bg-brand-950/30 border border-brand-800/50 px-2.5 py-1.5 rounded-md shadow-[0_0_10px_rgba(2,132,199,0.1)]">Embedding Search</span>
+              <span className="text-brand-500/50 font-bold">→</span>
+              <span className="bg-brand-950/30 border border-brand-800/50 px-2.5 py-1.5 rounded-md shadow-[0_0_10px_rgba(2,132,199,0.1)]">Top-5 Retrieval</span>
+              <span className="text-brand-500/50 font-bold">→</span>
+              <span className="bg-brand-950/30 border border-brand-800/50 px-2.5 py-1.5 rounded-md shadow-[0_0_10px_rgba(2,132,199,0.1)]">LLM Verify</span>
+              <span className="text-brand-500/50 font-bold">→</span>
+              <span className="bg-brand-950/30 border border-brand-800/50 px-2.5 py-1.5 rounded-md shadow-[0_0_10px_rgba(2,132,199,0.1)]">Report</span>
             </div>
           </div>
 
           <div>
-            <h4 className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2">Responsibilities</h4>
-            <ul className="text-sm text-slate-400 list-disc pl-5 space-y-1.5 marker:text-brand-500">
-              <li>Retrieve supporting evidence</li>
-              <li>Validate factual consistency</li>
-              <li>Generate confidence score</li>
-              <li>Produce structured verification report</li>
+            <h4 className="text-[10px] font-bold text-slate-500 uppercase tracking-wider mb-3">Responsibilities</h4>
+            <ul className="text-xs text-slate-300 flex flex-wrap gap-x-6 gap-y-2.5 list-none">
+              <li className="flex items-center gap-2"><div className="w-1.5 h-1.5 rounded-full bg-brand-500 shadow-[0_0_8px_rgba(2,132,199,0.8)]"></div>Retrieve supporting evidence</li>
+              <li className="flex items-center gap-2"><div className="w-1.5 h-1.5 rounded-full bg-brand-500 shadow-[0_0_8px_rgba(2,132,199,0.8)]"></div>Validate factual consistency</li>
+              <li className="flex items-center gap-2"><div className="w-1.5 h-1.5 rounded-full bg-brand-500 shadow-[0_0_8px_rgba(2,132,199,0.8)]"></div>Generate confidence score</li>
+              <li className="flex items-center gap-2"><div className="w-1.5 h-1.5 rounded-full bg-brand-500 shadow-[0_0_8px_rgba(2,132,199,0.8)]"></div>Produce structured verification report</li>
             </ul>
           </div>
         </div>
 
         {/* Beta Agent Card */}
-        <div className="bg-slate-900/80 backdrop-blur-sm border border-slate-800/80 rounded-xl p-6 shadow-lg relative overflow-hidden group hover:border-brand-500/30 transition-all">
+        <div className="bg-slate-900/80 backdrop-blur-sm border border-slate-800/80 rounded-xl p-6 shadow-lg relative overflow-hidden group hover:border-brand-500/50 transition-all">
           <div className="absolute top-0 left-0 w-full h-1 bg-slate-800 group-hover:bg-brand-500 transition-colors"></div>
-          <h3 className="text-lg font-bold text-slate-200 mb-2 border-b border-slate-800 pb-3 flex items-center gap-2">
-            <span className="text-brand-500">Beta Agent</span> — Knowledge Base
+          <h3 className="text-base font-bold text-slate-100 mb-1 border-b border-slate-800/80 pb-3 flex items-center gap-2">
+            <span className="text-brand-400">Beta Agent</span> <span className="text-slate-500 font-normal">—</span> Knowledge Base
           </h3>
-          <p className="text-sm text-slate-400 mb-6 font-medium">
+          <p className="text-xs text-slate-400 mb-5 mt-3 font-medium">
             Responsible for redundancy detection and contradiction analysis.
           </p>
 
           <div className="mb-6">
-            <h4 className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-3">Workflow</h4>
-            <div className="text-xs text-slate-300 space-y-1 font-mono">
-              <div className="flex flex-col items-center">
-                <span className="bg-slate-950/50 border border-slate-800 px-3 py-2 rounded-lg w-full text-center shadow-inner">Alpha Report</span>
-                <span className="text-slate-600 py-1">↓</span>
-                <span className="bg-slate-950/50 border border-slate-800 px-3 py-2 rounded-lg w-full text-center shadow-inner">Embedding Generation</span>
-                <span className="text-slate-600 py-1">↓</span>
-                <span className="bg-slate-950/50 border border-slate-800 px-3 py-2 rounded-lg w-full text-center shadow-inner">Similarity Search</span>
-                <span className="text-slate-600 py-1">↓</span>
-                <span className="bg-slate-950/50 border border-slate-800 px-3 py-2 rounded-lg w-full text-center shadow-inner">Knowledge Base Comparison</span>
-                <span className="text-slate-600 py-1">↓</span>
-                <span className="bg-slate-950/50 border border-slate-800 px-3 py-2 rounded-lg w-full text-center shadow-inner">Contradiction Analysis</span>
-                <span className="text-slate-600 py-1">↓</span>
-                <span className="bg-slate-950/50 border border-slate-800 px-3 py-2 rounded-lg w-full text-center shadow-inner">Decision Engine</span>
-              </div>
+            <h4 className="text-[10px] font-bold text-slate-500 uppercase tracking-wider mb-3">Workflow</h4>
+            <div className="text-[10px] sm:text-xs text-brand-200/90 font-mono flex flex-wrap items-center gap-2">
+              <span className="bg-brand-950/30 border border-brand-800/50 px-2.5 py-1.5 rounded-md shadow-[0_0_10px_rgba(2,132,199,0.1)]">Alpha Report</span>
+              <span className="text-brand-500/50 font-bold">→</span>
+              <span className="bg-brand-950/30 border border-brand-800/50 px-2.5 py-1.5 rounded-md shadow-[0_0_10px_rgba(2,132,199,0.1)]">Embedding Gen</span>
+              <span className="text-brand-500/50 font-bold">→</span>
+              <span className="bg-brand-950/30 border border-brand-800/50 px-2.5 py-1.5 rounded-md shadow-[0_0_10px_rgba(2,132,199,0.1)]">Similarity Search</span>
+              <span className="text-brand-500/50 font-bold">→</span>
+              <span className="bg-brand-950/30 border border-brand-800/50 px-2.5 py-1.5 rounded-md shadow-[0_0_10px_rgba(2,132,199,0.1)]">KB Compare</span>
+              <span className="text-brand-500/50 font-bold">→</span>
+              <span className="bg-brand-950/30 border border-brand-800/50 px-2.5 py-1.5 rounded-md shadow-[0_0_10px_rgba(2,132,199,0.1)]">Contradiction Analysis</span>
+              <span className="text-brand-500/50 font-bold">→</span>
+              <span className="bg-brand-950/30 border border-brand-800/50 px-2.5 py-1.5 rounded-md shadow-[0_0_10px_rgba(2,132,199,0.1)]">Decision Engine</span>
             </div>
           </div>
 
           <div>
-            <h4 className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2">Responsibilities</h4>
-            <ul className="text-sm text-slate-400 list-disc pl-5 space-y-1.5 marker:text-brand-500">
-              <li>Detect duplicate facts</li>
-              <li>Detect contradictory facts</li>
-              <li>Protect database integrity</li>
-              <li>Determine storage action</li>
+            <h4 className="text-[10px] font-bold text-slate-500 uppercase tracking-wider mb-3">Responsibilities</h4>
+            <ul className="text-xs text-slate-300 flex flex-wrap gap-x-6 gap-y-2.5 list-none">
+              <li className="flex items-center gap-2"><div className="w-1.5 h-1.5 rounded-full bg-brand-500 shadow-[0_0_8px_rgba(2,132,199,0.8)]"></div>Detect duplicate facts</li>
+              <li className="flex items-center gap-2"><div className="w-1.5 h-1.5 rounded-full bg-brand-500 shadow-[0_0_8px_rgba(2,132,199,0.8)]"></div>Detect contradictory facts</li>
+              <li className="flex items-center gap-2"><div className="w-1.5 h-1.5 rounded-full bg-brand-500 shadow-[0_0_8px_rgba(2,132,199,0.8)]"></div>Protect database integrity</li>
+              <li className="flex items-center gap-2"><div className="w-1.5 h-1.5 rounded-full bg-brand-500 shadow-[0_0_8px_rgba(2,132,199,0.8)]"></div>Determine storage action</li>
             </ul>
           </div>
         </div>
