@@ -12,3 +12,4 @@ langchain-core
 requests
 scikit-learn
 groq>=0.30.0
+numpy
