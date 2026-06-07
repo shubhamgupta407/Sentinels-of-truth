@@ -1,21 +1,17 @@
-import requests
+from huggingface_hub import InferenceClient
 import numpy as np
 import os
 
-HF_TOKEN = os.getenv("HF_TOKEN")
-API_URL = "https://api-inference.huggingface.co/pipeline/feature-extraction/sentence-transformers/all-MiniLM-L6-v2"
+client = InferenceClient(token=os.getenv("HF_TOKEN"))
 
 def get_embedding(text: str):
-    headers = {"Authorization": f"Bearer {HF_TOKEN}"}
-    res = requests.post(API_URL, headers=headers, json={
-        "inputs": text,
-        "options": {"wait_for_model": True}
-    })
-    result = res.json()
-    #HF returns nested list sometimes — flatten it!
+    result = client.feature_extraction(
+        text, 
+        model="sentence-transformers/all-MiniLM-L6-v2"
+    )
     if isinstance(result[0], list):
         return result[0]
-    return result
+    return list(result)
 
 def get_similarity(embedding_1, embedding_2):
     a = np.array(embedding_1)
