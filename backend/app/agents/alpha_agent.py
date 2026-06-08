@@ -5,7 +5,7 @@ import re
 
 
 def chunk_text(text: str, chunk_size=250, overlap=50) -> list[str]:
-    # split on sentence boundaries so we don't cut mid-sentence
+    #Splitting on sentence boundaries so we don't cut mid-sentence if there is any common things between.
     sentences = re.split(r'(?<=[.!?])\s+', text.strip())
     chunks = []
     current_chunk = []
@@ -20,7 +20,7 @@ def chunk_text(text: str, chunk_size=250, overlap=50) -> list[str]:
         if current_length + sentence_len > chunk_size and current_chunk:
             chunks.append(" ".join(current_chunk))
 
-            # carry over last few sentences so context doesn't break between chunks
+            #Carry over last few sentences so context doesn't break between chunks!
             overlap_chunk = []
             overlap_length = 0
             for s in reversed(current_chunk):
@@ -55,7 +55,7 @@ def alpha_agent(state: AgentState) -> AgentState:
         raw = "\n".join([r["content"] for r in search_results["results"]])
         chunks = chunk_text(raw)
 
-        # rank chunks by relevance to the claim instead of using all of them
+        #Rank chunks by relevance to the claim instead of using all of them.
         claim_emb = get_embedding(claim)
         scored = []
         for chunk in chunks:
@@ -64,7 +64,7 @@ def alpha_agent(state: AgentState) -> AgentState:
             scored.append((score, chunk))
 
         scored.sort(key=lambda x: x[0], reverse=True)
-        top_chunks = [c for _, c in scored[:5]]  # top 5 is usually enough
+        top_chunks = [c for _, c in scored[:5]]  #top 5 is usually enough
         evidence = "\n...\n".join(top_chunks)
 
     result = {"status": "UNVERIFIED", "confidence": 0, "reason": "No evidence found."}
