@@ -12,7 +12,7 @@ app = FastAPI(
     version="0.1.0"
 )
 
-# make sure tables exist before anything hits the db
+#Make sure tables exist before anything hits the db.
 create_tables()
 
 app.add_middleware(
@@ -20,10 +20,10 @@ app.add_middleware(
     allow_origins=["*"],
     allow_credentials=True,
     allow_methods=["*"],
-    allow_headers=["*"],  # open for now, can restrict later in prod
+    allow_headers=["*"],  #Open for now, can restrict later in prod.
 )
 
-# importing here to avoid circular import issues
+#Importing here to avoid circular import issues
 from app.routes import verification, audit
 
 @app.get("/")
