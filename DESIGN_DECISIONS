@@ -1,0 +1,135 @@
+1. CONTRADICTION HANDLING
+
+One of the primary goals of the system is to prevent incorrect or conflicting information from entering the knowledge base.
+The verification pipeline operates in two stages:
+
+-> Alpha Agent verifies the claim using external evidence.
+-> Beta Agent validates the verified claim against existing knowledge.
+
+Current Workflow:
+Claim
+  |
+  v
+Alpha Agent
+(Evidence Verification)
+  |
+  +-- UNVERIFIED
+  |       |
+  |       v
+  |    DISCARD
+  |
+  +-- VERIFIED
+          |
+          v
+     Beta Agent
+          |
+          v
+   Semantic Similarity Search
+          |
+          v
+   Similar Fact Found?
+      /         \
+    No           Yes
+    |             |
+    v             v
+ INSERT     Contradiction Analysis
+                    |
+                    v
+            LLM Consistency Review
+               /           \
+        Same Fact      Conflicting Fact
+            |                 |
+            v                 v
+        DISCARD            FLAG
+
+
+Explanation:-
+
+A claim enters contradiction analysis only after it has already been verified by external evidence.
+The Beta Agent first searches the knowledge base for semantically similar facts using embedding-based similarity search.
+
+If no similar fact exists, the claim is treated as new knowledge and inserted into the database.
+If a similar fact is found, the system performs contradiction analysis. At this stage, 
+semantic similarity alone is not considered sufficient because two statements can appear similar while expressing different meanings.
+
+To handle this, the retrieved fact and the incoming claim are passed to an LLM-based consistency review.
+
+Examples:
+Existing Fact:
+Narendra Modi is the Prime Minister of India.
+
+Incoming Claim:
+India's current Prime Minister is Narendra Modi.
+
+LLM Decision:
+Same Fact
+
+Database Action:
+DISCARD
+
+The information already exists and does not need to be stored again.
+
+Existing Fact:
+Narendra Modi is the Prime Minister of India.
+
+Incoming Claim:
+Rahul Gandhi is the Prime Minister of India.
+
+LLM Decision:
+Conflicting Fact
+
+Database Action:
+FLAG
+
+The claim conflicts with verified knowledge and requires review before any action is taken.
+Claims that fail factual verification in the Alpha Agent never reach contradiction analysis.
+
+Example:
+Narendra Modi is not the Prime Minister of India.
+
+Since external evidence does not support the statement, the Alpha Agent marks it as UNVERIFIED and the claim is immediately DISCARDED.
+This design avoids unnecessary processing and prevents unsupported information from entering the knowledge base.
+
+Future Improvements:
+
+-> Automatic contradiction resolution
+-> Human-in-the-loop review workflows
+-> Confidence-weighted conflict scoring
+-> Multi-fact consistency validation
+-> Temporal contradiction detection for time-sensitive facts
+
+
+
+2. SEMANTIC SIMILARITY THRESHOLD (0.85)
+
+The Beta Agent uses embedding-based similarity search to compare newly verified claims against facts already stored in the knowledge base.
+Each claim is converted into a vector embedding using the Hugging Face Inference API. 
+Cosine similarity is then used to measure how closely the new claim matches existing knowledge.
+
+A similarity threshold of 0.85 was selected after testing different values during development.
+
+Why 0.85?
+
+- Lower thresholds produced false matches between unrelated claims.
+- Higher thresholds missed claims that expressed the same fact using different wording.
+- 0.85 provided the best balance between duplicate detection and knowledge base growth.
+
+Example:
+Claim A:
+"Narendra Modi is the Prime Minister of India."
+
+Claim B:
+"India's current Prime Minister is Narendra Modi."
+
+Although the wording is different, both statements represent the same fact and generate a high similarity score.
+The system identifies them as redundant knowledge and avoids storing duplicate information.
+
+This approach helps:
+
+- Detect paraphrased facts
+- Reduce duplicate entries
+- Maintain knowledge base consistency
+- Improve retrieval quality
+
+The threshold remains configurable and can be adjusted as the size and diversity of the knowledge base increase.
+
