@@ -11,6 +11,10 @@ Sentinels of Truth is an AI-powered fact verification platform that combines ext
 
 The system is orchestrated using **LangGraph**, where multiple agents collaborate through a shared **AgentState** to verify, validate, and manage facts before they are stored in the knowledge base.
 
+> **⚠️ Deployment Note**
+>
+> The backend is hosted on **Render Free Tier**. After a period of inactivity, Render automatically puts the service into a sleep state. As a result, the **first request may take approximately 15–20 seconds** due to a cold start. Subsequent requests are processed normally without this delay.
+
 # Live Deployment
 
 ### Frontend
