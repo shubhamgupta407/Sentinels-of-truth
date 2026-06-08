@@ -581,6 +581,77 @@ External Services:
 - Groq LLM
 - HuggingFace Inference API
 ```
+# Screenshots
+
+## Home Dashboard
+
+The main interface where users submit factual claims for verification.
+
+![Home Dashboard](screenshots/HomePage.png)
+
+---
+
+## Verified Claim Result
+
+Example of a successfully verified claim with confidence score and verdict.
+
+![Verified Claim](screenshots/Verified-Claim.png)
+
+---
+
+## Supporting Evidence
+
+Evidence retrieved from external trusted sources and used during verification.
+
+![Evidence](screenshots/Evidence.png)
+
+---
+
+## Technical Execution Trace
+
+LangGraph execution pipeline showing the verification workflow stages.
+
+![Technical Trace](screenshots/Technical-traces.png)
+
+---
+
+## System Architecture – Overview
+
+High-level architecture of the Sentinels of Truth platform.
+
+![System Architecture 1](screenshots/System-Architecture1.png)
+
+---
+
+## System Architecture – Detailed Flow
+
+Detailed workflow illustrating agent orchestration and decision making.
+
+![System Architecture 2](screenshots/System-Architecture2.png)
+
+---
+
+## Audit Logging Dashboard
+
+Audit records generated after verification requests.
+
+![Audit Logs 1](screenshots/AuditLogs-1.png)
+
+---
+
+## Audit Log Details
+
+Detailed view of stored verification history and decision trace.
+
+![Audit Logs 2](screenshots/AuditLogs-2.png)
+
+---
+
+## Unverified Claim Result
+
+Example of a claim identified as unsupported or false.
+
+![Unverified Claim](screenshots/Unverified-claim.png)
 
 # Future Improvements
 
