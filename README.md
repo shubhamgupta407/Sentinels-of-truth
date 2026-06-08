@@ -11,6 +11,17 @@ Sentinels of Truth is an AI-powered fact verification platform that combines ext
 
 The system is orchestrated using **LangGraph**, where multiple agents collaborate through a shared **AgentState** to verify, validate, and manage facts before they are stored in the knowledge base.
 
+# Live Deployment
+
+### Frontend
+https://sentinels-of-truth.netlify.app
+
+### Backend API
+https://sentinels-of-truth-api.onrender.com
+
+### API Documentation
+https://sentinels-of-truth-api.onrender.com/docs
+
 ---
 
 ## Problem Statement
@@ -79,7 +90,7 @@ The AgentState acts as the shared memory structure exchanged between agents duri
 User Claim
     │
     ▼
-Tavily Search
+Tavily Search API
     │
     ▼
 Evidence Retrieval
@@ -94,16 +105,22 @@ Semantic Ranking
 Top-K Evidence Selection
     │
     ▼
-Groq LLM Verification
+Alpha Agent
+(Evidence Verification)
     │
     ▼
-Alpha Verification Report
+Verification Report
     │
     ▼
-Embedding Generation
+HuggingFace Embeddings
+(all-MiniLM-L6-v2)
     │
     ▼
-Knowledge Base Similarity Search
+Beta Agent
+(Knowledge Base Validation)
+    │
+    ▼
+Similarity Search
     │
     ▼
 Duplicate Detection
@@ -112,14 +129,17 @@ Duplicate Detection
 Contradiction Detection
     │
     ▼
-Decision Engine
+Knowledge Base Decision
     │
     ├── INSERT
     ├── DISCARD
     └── FLAG
     │
     ▼
-Persistent Audit Logging
+Audit Logging
+    │
+    ▼
+Final Verdict
 ```
 
 ---
@@ -296,12 +316,15 @@ Stage 6: Knowledge Base Decision
 - SQLite
 - Pydantic
 
-## AI & NLP
+# AI & NLP
 
-- Sentence Transformers
+- Groq LLM
+- Tavily Search API
+- HuggingFace Hub InferenceClient
+- all-MiniLM-L6-v2 Embeddings
 - Semantic Similarity Search
 - Cosine Similarity
-- Embedding-Based Retrieval
+- Knowledge Base Validation
 
 ## Frontend
 
@@ -385,11 +408,15 @@ POST /api/v1/verify/
 
 ---
 
-## Fetch Audit Logs
+## Audit Log Retrieval
+
+Retrieve a specific verification record using:
 
 ```http
-GET /api/v1/audit-logs
+GET /api/v1/audit-logs/{id}
 ```
+
+This endpoint enables traceability and explainability by returning the complete verification history associated with a specific audit log entry.
 
 ---
 
@@ -519,6 +546,42 @@ DISCARD
 
 ---
 
+
+# Deployment Architecture
+
+```text
+Frontend
+(React + Vite)
+      │
+      ▼
+Netlify
+      │
+      ▼
+FastAPI Backend
+(Render)
+      │
+      ▼
+LangGraph Workflow
+      │
+ ┌────┴────┐
+ │         │
+ ▼         ▼
+Alpha     Beta
+Agent     Agent
+ │         │
+ └────┬────┘
+      ▼
+SQLite Database
+      │
+      ▼
+Audit Logs
+
+External Services:
+- Tavily Search API
+- Groq LLM
+- HuggingFace Inference API
+```
+
 # Future Improvements
 
 ## Retrieval Quality
@@ -553,33 +616,47 @@ DISCARD
 
 ---
 
-# Key Features
+# Project Highlights
 
-✅ LangGraph Multi-Agent Orchestration
+✅ Multi-Agent Verification Pipeline
 
-✅ Shared AgentState Architecture
+✅ LangGraph StateGraph Orchestration
 
-✅ External Evidence Retrieval
+✅ Evidence-Based Fact Verification
 
-✅ AI-Powered Fact Verification
+✅ HuggingFace Semantic Embeddings
 
-✅ Semantic Similarity Search
+✅ Semantic Redundancy Detection
 
-✅ Duplicate Detection
+✅ Duplicate Fact Detection
 
 ✅ Contradiction Detection
 
 ✅ Knowledge Base Integrity Protection
 
-✅ Persistent Audit Logs
+✅ Persistent Audit Logging
 
-✅ Execution Trace Visibility
+✅ Explainable AI Decisions
 
-✅ Explainable Verification Pipeline
+✅ FastAPI REST Backend
 
-✅ RESTful FastAPI Backend
+✅ React Frontend
 
+✅ Deployed on Render & Netlify
 ---
+# Author
+
+**Shubham Gupta**
+
+B.Tech Computer Science Engineering
+
+Lovely Professional University
+
+GitHub:
+https://github.com/shubhamgupta407
+
+Project:
+Sentinels of Truth – Multi-Agent Knowledge Verification & Fact Validation Platform
 
 # Version
 
