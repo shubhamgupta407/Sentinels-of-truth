@@ -587,7 +587,7 @@ External Services:
 
 The main interface where users submit factual claims for verification.
 
-![Home Dashboard](screenshots/HomePage.png)
+![Home Dashboard](Screenshots/HomePage.png)
 
 ---
 
@@ -595,7 +595,7 @@ The main interface where users submit factual claims for verification.
 
 Example of a successfully verified claim with confidence score and verdict.
 
-![Verified Claim](screenshots/Verified-Claim.png)
+![Verified Claim](Screenshots/Verified-Claim.png)
 
 ---
 
@@ -603,7 +603,7 @@ Example of a successfully verified claim with confidence score and verdict.
 
 Evidence retrieved from external trusted sources and used during verification.
 
-![Evidence](screenshots/Evidence.png)
+![Evidence](Screenshots/Evidence.png)
 
 ---
 
@@ -611,7 +611,7 @@ Evidence retrieved from external trusted sources and used during verification.
 
 LangGraph execution pipeline showing the verification workflow stages.
 
-![Technical Trace](screenshots/Technical-traces.png)
+![Technical Trace](Screenshots/Technical-traces.png)
 
 ---
 
@@ -619,7 +619,7 @@ LangGraph execution pipeline showing the verification workflow stages.
 
 High-level architecture of the Sentinels of Truth platform.
 
-![System Architecture 1](screenshots/System-Architecture1.png)
+![System Architecture 1](Screenshots/System-Architecture1.png)
 
 ---
 
@@ -627,7 +627,7 @@ High-level architecture of the Sentinels of Truth platform.
 
 Detailed workflow illustrating agent orchestration and decision making.
 
-![System Architecture 2](screenshots/System-Architecture2.png)
+![System Architecture 2](Screenshots/System-Architecture2.png)
 
 ---
 
@@ -635,7 +635,7 @@ Detailed workflow illustrating agent orchestration and decision making.
 
 Audit records generated after verification requests.
 
-![Audit Logs 1](screenshots/AuditLogs-1.png)
+![Audit Logs 1](Screenshots/AuditLogs-1.png)
 
 ---
 
@@ -643,7 +643,7 @@ Audit records generated after verification requests.
 
 Detailed view of stored verification history and decision trace.
 
-![Audit Logs 2](screenshots/AuditLogs-2.png)
+![Audit Logs 2](Screenshots/AuditLogs-2.png)
 
 ---
 
@@ -651,7 +651,7 @@ Detailed view of stored verification history and decision trace.
 
 Example of a claim identified as unsupported or false.
 
-![Unverified Claim](screenshots/Unverified-claim.png)
+![Unverified Claim](Screenshots/Unverified-claim.png)
 
 # Future Improvements
 
