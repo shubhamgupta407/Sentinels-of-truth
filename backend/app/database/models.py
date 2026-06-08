@@ -8,11 +8,12 @@ class Fact(Base):
 
     id = Column(Integer, primary_key=True, index=True)
     claim = Column(String, index=True)
-    status = Column(String)         # e.g., "VERIFIED" or "UNVERIFIED"
+    status = Column(String)         #e.g., "VERIFIED" or "UNVERIFIED"
     confidence = Column(Float)
+    
     evidence = Column(Text)
-    created_at = Column(String)     # using existing schema
-    embedding = Column(Text, nullable=True)  # JSON string of floats
+    created_at = Column(String)     #using existing schema
+    embedding = Column(Text, nullable=True)  #JSON string of floats
 
 
 class AuditLog(Base):
@@ -24,8 +25,9 @@ class AuditLog(Base):
     confidence = Column(Float)
     reason = Column(Text)
     evidence = Column(Text)
-    db_action = Column(String)      # INSERT / FLAG / DISCARD
-    verdict = Column(String)        # new / redundant / conflict / unverified
+    db_action = Column(String)      #INSERT / FLAG / DISCARD
+    verdict = Column(String)        #new / redundant / conflict / unverified
+    
     similarity_score = Column(Float, nullable=True)
     conflicting_fact_id = Column(Integer, nullable=True)
     stored_claim = Column(String, nullable=True)
