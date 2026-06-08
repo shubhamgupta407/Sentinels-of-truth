@@ -17,7 +17,7 @@ def beta_agent(state: AgentState) -> AgentState:
 
     db = SessionLocal()
     try:
-        # exact duplicate — no point storing it again
+        #Exact duplicate — no point storing it again.
         if db.query(Fact).filter(Fact.claim == claim).first():
             state["db_action"] = "DISCARD"
             state["verdict"] = "redundant"
@@ -42,7 +42,7 @@ def beta_agent(state: AgentState) -> AgentState:
                 top_claim = fact.claim
                 top_fact = fact
 
-        # 0.85 threshold — anything above this is close enough to check
+        #0.85 threshold — anything above this is close enough to check.
         if best_score > 0.85 and top_claim:
             result = check_contradiction(claim, top_claim)
 
